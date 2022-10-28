@@ -1,5 +1,7 @@
 if (typeof (_pio) == 'undefined') { _pio = {} }
+
 (function () {
+
 	_pio.channel = function () { };
 	_pio.channel.prototype.call = function (method, args, successCallback, errorCallback, converter) {
 		var url = typeof (PLAYERIO_API_HOST) != 'undefined' ? PLAYERIO_API_HOST : ((PlayerIO.useSecureApiRequests ? 'https' : 'http') + '://api.playerio.com/json/');
@@ -183,6 +185,9 @@ PlayerIO = {
 	 * @param {function(PlayerIOError)} errorCallback Callback function that will be called if an error occurs
 	 */
 	authenticate: function (gameId, connectionId, authenticationArguments, playerInsightSegments, successCallback, errorCallback) {
+		console.log("run playerio");
+
+
 		if (authenticationArguments.publishingnetworklogin == 'auto') {
 			if (typeof (window.PublishingNetwork) == 'undefined') {
 				errorCallback(new PlayerIOError(PlayerIOErrorCode.GeneralError, "Could not find the PublishingNetwork object on the current page. Did you include the PublishingNetwork.js script?"));
